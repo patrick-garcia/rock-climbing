@@ -1,0 +1,25 @@
+// 500px
+@mixin mediaMd {
+  @media screen and (min-width: 31.25em ) {
+    @content;
+  }
+}
+
+// 769 - 1170
+@mixin mediaLg {
+  @media screen and (min-width: 48.0625em) {
+    @content;
+  }
+}
+
+// 1171
+@mixin mediaXl {
+  @media screen and (min-width: 1171px) {
+    @content;
+  }
+}
+
+// customer
+@mixin customMedia($width) {
+  @media screen and (min-width: $width) { @content; }
+}

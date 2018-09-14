@@ -1,0 +1,30 @@
+.window-img {
+	display: none;
+}
+
+// ****
+@include mediaLg {
+	.window-img {
+		display: block;
+
+		background-image: url('../img/window.jpg');
+		background-position: left top;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: cover;
+		height: 300px;
+		width: auto;
+
+		-webkit-filter: blur(2px);
+		filter: blur(2px);
+
+		-webkit-transition: blur .5s ease-in-out;
+		-o-webkit-transition: blur .5s ease-in-out;
+		transition: blur .5s ease-in-out;
+
+		&:hover {
+			-webkit-filter: blur(0px);
+			filter: blur(0px);
+		}
+	}
+}

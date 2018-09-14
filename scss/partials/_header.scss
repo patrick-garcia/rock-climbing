@@ -1,0 +1,201 @@
+//mountain animate
+@mixin fade-in($duration, $delay) {
+  -webkit-animation: fadeIn $duration ease-in $delay forwards;
+  animation: fadeIn $duration ease-in $delay forwards;
+
+  @-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+@mixin slide-right($duration, $delay) {
+  -webkit-animation: slide $duration ease-in $delay forwards;
+  animation: slide $duration ease-in $delay forwards;
+
+  @-webkit-keyframes slide {
+    from { opacity: 0; transform: translate(-400px, 0); }
+    to { opacity: 1; transform: translate(0, 0); }
+  }
+
+  @keyframes slide {
+    from { opacity: 0; transform: translate(-400px, 0); }
+    to { opacity: 1; transform: translate(0, 0); }
+  }
+}
+
+// less than 500px
+div.bg-mobile {
+  display: block;
+  background: url('../img/bg-mobile2.jpg');
+  background-size: cover;
+  height: 475px;
+  position: relative;
+
+  div.header-overlay { display: none; }
+
+  div.title-mobile {
+    position: absolute;
+    left: 6%;
+    top: 75%;
+
+    h1 {
+      @include font-header(italic);
+      font-size: 30px;
+      color: $title-black;
+      letter-spacing: 2px;
+      text-shadow: 1px 1px 2px $text-shadow-gray;
+    }
+
+    span.green-underline {
+      @include green-line(162px);
+      vertical-align: bottom;
+      margin-bottom: 10px;
+    }
+
+    h4 {
+      @include font-header(italic);
+      font-size: 22px;
+      color: $title-black2;
+    }
+  }
+}
+
+div.bg-header { display: none; }
+
+span.divider {
+  @include section-divider();
+}
+
+// 500 to 768
+@include mediaMd {
+	div.bg-mobile {
+    background: url('../img/bg-mobile.jpg');
+		height: 450px;
+    position: relative;
+    
+    div.header-overlay {
+      display: block;
+      z-index: 2;
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+		div.title-mobile {
+      z-index: 3;
+			position: absolute;
+			left: 8%;
+      top: 60%;
+
+			h1 {
+        @include font-header(italic);
+        font-size: 36px;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        color: $title-black;
+        color: transparentize(white, .30);
+        text-shadow: 2px 2px 4px $text-shadow-gray;
+      }
+
+      span.green-underline {
+        @include green-line(194px);
+        vertical-align: bottom;
+        margin-bottom: 10px;
+      }
+      
+      h4 {
+        @include font-header(italic);
+        font-size: 26px;
+        text-transform: lowercase;
+        color: transparentize(white, .30);
+      }
+		}
+	}
+}
+
+@include mediaLg {
+  div.bg-mobile { display: none; }
+
+  div.bg-header {
+    display: block;
+    background: url('../img/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 750px;
+    position: relative;
+    overflow: hidden;
+    z-index: -1;
+
+    div.mountain {
+      height: 100%;
+      width: 100%;
+      background-image: url(../img/mountain.png);
+      background-size: cover;
+      position: absolute;
+      top: 30%;
+      left: 0%;
+      z-index: 4;
+
+      opacity: 0;
+      @include fade-in(.9s, .4s);
+    }
+
+    div.silhouette {
+      width: 401px;
+      height: 600px;
+      background-image: url(../img/climber.png);
+      position: absolute;
+      right: 0;
+      top: -20%;
+      z-index: 5;
+
+      opacity: 0;
+      @include fade-in(.9s, 1.3s);
+    }
+    
+    div.title {
+      position: absolute;
+      top: 12%;
+      left: 12%;
+      z-index: 3;
+
+      .animation-container {
+        opacity: 0;
+        -webkit-transform: translate(-400px, 0);
+        -ms-transform: translate(-400px, 0);
+        transform: translate(-400px, 0);
+        @include slide-right(.4s, 1.6s);
+      }
+
+      h1 {
+        @include font-header(italic);
+        font-size: 44px;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        color: $title-black;
+        text-shadow: 2px 2px 4px $text-shadow-gray;
+      }
+      
+      span.green-underline {
+        @include green-line(225px);
+        vertical-align: bottom;
+        margin-bottom: 10px;
+      }
+      
+      h4 {
+        @include font-header(italic);
+        font-size: 28px;
+        text-transform: lowercase;
+        color: $title-black2;
+      }
+    }
+  }
+}
+
