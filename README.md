@@ -5,4 +5,4 @@ Rock Climbing Website
 * Sass
 * Responsive Design
 
-* Use "Live Server" extension on VScode & "NPM rum sass"
+* Use "Live Server" extension on VScode & "NPM run sass"
